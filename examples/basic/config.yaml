@@ -1,0 +1,7 @@
+app:
+  name: ${APP_NAME}
+  environment: ${APP_ENV}
+  port: ${APP_PORT}
+database:
+  host: ${DB_HOST}
+  port: ${DB_PORT}
