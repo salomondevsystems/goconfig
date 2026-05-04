@@ -145,8 +145,8 @@ func replaceEnvVariables(content string) (string, error) {
 	var err error
 	result := regexEnv.ReplaceAllStringFunc(content, func(match string) string {
 		envVar := regexEnv.FindStringSubmatch(match)[1]
-		env := os.Getenv(envVar)
-		if env == "" {
+		env, found := os.LookupEnv(envVar)
+		if !found {
 			err = fmt.Errorf("%w: %s", ErrVariableNotFound, envVar)
 			return match
 		}
